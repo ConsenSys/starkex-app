@@ -30,7 +30,7 @@ jobs:
         with:
           images: |
             525515400715.dkr.ecr.eu-west-3.amazonaws.com/starkware-dev-app
-            933520531266.dkr.ecr.eu-west-3.amazonaws.com/starkware-production-app,enable=false
+            933520531266.dkr.ecr.eu-west-3.amazonaws.com/starkware-prod-app
           flavor: |
             latest=false
           tags: |
@@ -49,16 +49,16 @@ jobs:
         with:
           registry: 525515400715.dkr.ecr.eu-west-3.amazonaws.com
 
-      #- name: Configure AWS Credentials - Production Account
-      #  uses: aws-actions/configure-aws-credentials@v1
-      #  with:
-      #    role-to-assume: arn:aws:iam::933520531266:role/ecr-push-starkware-production-starkware
-      #    aws-region: ${{ env.AWS_REGION }}
+      - name: Configure AWS Credentials - Production Account
+        uses: aws-actions/configure-aws-credentials@v1
+        with:
+         role-to-assume: arn:aws:iam::933520531266:role/ecr-push-starkware-prod-starkware
+         aws-region: ${{ env.AWS_REGION }}
 
-      #- name: Login to ECR - Production Account
-      #  uses: docker/login-action@v2
-      #  with:
-      #    registry: 297886154276.dkr.ecr.eu-west-3.amazonaws.com
+      - name: Login to ECR - Production Account
+        uses: docker/login-action@v2
+        with:
+         registry: 297886154276.dkr.ecr.eu-west-3.amazonaws.com
 
       - name: Set up docker Buildx
         id: buildx
