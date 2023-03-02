@@ -58,7 +58,7 @@ jobs:
       - name: Login to ECR - Production Account
         uses: docker/login-action@v2
         with:
-         registry: 297886154276.dkr.ecr.eu-west-3.amazonaws.com
+         registry: 933520531266.dkr.ecr.eu-west-3.amazonaws.com
 
       - name: Set up docker Buildx
         id: buildx
